@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Esteira de Produtos — Maria Katriane</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #d6336c;
+    --rose-deep: #a61e4d;
+    --blush: #fff0f5;
+    --petal: #fcd5e3;
+    --mauve: #6b2a4a;
+    --lilac: #e9d8fd;
+    --gold: #c9a227;
+    --ink: #3b1a2c;
+  }
+  .reveal { font-family: 'Poppins', sans-serif; color: var(--ink); font-size: 34px; }
+  .reveal-viewport { background: linear-gradient(135deg, #fff7fa 0%, #fde4ee 55%, #f3e5fb 100%); }
+  .reveal h1, .reveal h2, .reveal h3 {
+    font-family: 'Playfair Display', serif; color: var(--mauve);
+    text-transform: none; letter-spacing: 0; font-weight: 700;
+  }
+  .reveal h1 { font-size: 2.1em; line-height: 1.15; }
+  .reveal h2 { font-size: 1.5em; margin-bottom: .5em; }
+  .reveal h3 { font-size: 1em; color: var(--rose-deep); }
+  .reveal p, .reveal li { line-height: 1.4; }
+  .reveal ul { margin-left: 0; }
+  .reveal em { color: var(--rose); font-style: italic; }
+  .reveal strong { color: var(--rose-deep); font-weight: 600; }
+
+  /* decoração */
+  .reveal .slides section { text-align: left; }
+  .reveal .slides section.center-text { text-align: center; }
+  .blob { position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
+  .blob.a { width: 420px; height: 420px; background: var(--petal); opacity: .55; top: -140px; right: -120px; }
+  .blob.b { width: 260px; height: 260px; background: var(--lilac); opacity: .6; bottom: -90px; left: -80px; }
+  .reveal .slides section:not(.stack) {
+    box-sizing: border-box; height: 100% !important; top: 0 !important;
+    padding: 30px 110px 80px 70px !important; flex-direction: column; justify-content: center;
+  }
+  .reveal .slides section.present:not(.stack) { display: flex !important; }
+  .reveal .slides section.center-text { align-items: center; }
+  .reveal .slides section > *:not(.blob):not(section) { position: relative; z-index: 1; }
+  .reveal .slides section.center-text > *:not(.blob) { max-width: 100%; }
+  .reveal .slides section > .blob { position: absolute; }
+
+  .about { display: grid; grid-template-columns: 300px 1fr; gap: 44px; align-items: center; }
+  .about .photo {
+    width: 300px; height: 380px; border-radius: 150px 150px 28px 28px; overflow: hidden;
+    border: 6px solid #fff; box-shadow: 0 12px 32px rgba(166,30,77,.25);
+    background: linear-gradient(160deg, var(--petal), var(--lilac));
+    display: flex; align-items: center; justify-content: center; font-size: 5em; color: #fff;
+  }
+  .about .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 58% 10%; transform: scale(2.2); transform-origin: 58% 18%; margin: 0; border: 0; box-shadow: none; }
+  .about p { font-size: .58em; line-height: 1.5; margin: 0 0 .7em; }
+  .tag { align-self: flex-start; }
+  .center-text .tag { align-self: center; }
+  .about h2 { margin-bottom: .1em; }
+
+  .tag {
+    display: inline-block; background: var(--rose); color: #fff; font-size: .45em; font-weight: 500;
+    letter-spacing: .15em; text-transform: uppercase; padding: .3em 1em; border-radius: 999px; margin-bottom: 1em;
+  }
+  .num {
+    font-family: 'Playfair Display', serif; font-size: 3.2em; color: #f19cbb;
+    line-height: 1; font-weight: 700; margin-bottom: .05em;
+  }
+  .kicker { font-size: .6em; letter-spacing: .2em; text-transform: uppercase; color: var(--rose); font-weight: 500; }
+  .small { font-size: .62em; }
+  .muted { color: #8a5a73; }
+
+  .cards { display: grid; gap: 18px; margin-top: 1em; }
+  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
+  .cards.c4 { grid-template-columns: repeat(4, 1fr); }
+  .card {
+    background: rgba(255,255,255,.85); border: 1px solid var(--petal); border-radius: 22px;
+    padding: 22px 26px; box-shadow: 0 8px 24px rgba(166,30,77,.08); font-size: .74em;
+  }
+  .card h3 { margin: 0 0 .3em; font-size: 1.2em; }
+  .card p { margin: 0; }
+  .card .ico { font-size: 1.6em; display: block; margin-bottom: .2em; }
+
+  .quote-box {
+    background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%); color: #fff;
+    border-radius: 28px; padding: 36px 44px; box-shadow: 0 12px 32px rgba(166,30,77,.25);
+  }
+  .quote-box h2, .quote-box strong, .quote-box em { color: #fff; }
+
+  .steps { display: flex; align-items: stretch; gap: 10px; margin-top: 1em; }
+  .step { flex: 1; background: #fff; border: 1px solid var(--petal); border-radius: 18px; padding: 18px 16px; font-size: .72em; text-align: center; }
+  .step b { display: block; color: var(--rose-deep); font-family: 'Playfair Display', serif; font-size: 1.3em; }
+  .arrow { align-self: center; color: var(--rose); font-size: 1.1em; }
+
+  .pill-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1em; }
+  .pill { background: #fff; border: 1.5px solid var(--rose); color: var(--rose-deep); border-radius: 999px; padding: .4em 1.1em; font-size: .78em; font-weight: 500; }
+
+  .footer-bar {
+    position: absolute; bottom: -330px; left: 0; width: 100%; font-size: .38em; color: var(--rose-deep);
+    letter-spacing: .12em; text-transform: uppercase; display: flex; justify-content: space-between;
+  }
+  .reveal .progress { color: var(--rose); height: 6px; }
+  .reveal .controls { color: var(--rose); }
+  .reveal .slide-number { background: transparent; color: var(--rose-deep); font-family: 'Poppins'; }
+
+  /* marca fixa */
+  .brand {
+    position: fixed; left: 28px; bottom: 18px; z-index: 30; font-size: 13px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--rose-deep); font-family: 'Poppins', sans-serif; font-weight: 500;
+  }
+  .brand::before { content: "✿ "; color: var(--rose); }
+</style>
+</head>
+<body>
+<div class="brand">Maria Katriane · Product Manager</div>
+
+<div class="reveal">
+<div class="slides">
+
+  <!-- 1. CAPA -->
+  <section data-transition="fade">
+    <div class="blob a"></div><div class="blob b"></div>
+    <span class="tag">Palestra</span>
+    <h1>Esteira de produtos</h1>
+    <h2 style="font-style:italic; font-weight:500; color:var(--rose-deep); font-size:1.05em">Como saber se o meu produto está adequado ao mercado?</h2>
+    <p style="margin-top:1.6em"><strong>Maria Katriane</strong><br><span class="small muted">Product Manager</span></p>
+  </section>
+
+  <!-- QUEM SOU EU -->
+  <section data-transition="fade">
+    <div class="blob b"></div>
+    <div class="about">
+      <div class="photo"><img src="img/maria.jpeg" alt="Maria Katriane" onerror="this.parentNode.textContent='✿'"></div>
+      <div>
+        <p class="kicker" style="font-size:.6em; margin:0">Quem sou eu</p>
+        <h2>Maria Katriane</h2>
+        <p style="color:var(--rose-deep); font-weight:600">Product Manager</p>
+        <p>Pós-graduanda em Gestão de Produtos Digitais, com experiência em gestão de projetos, planejamento estratégico e inovação.</p>
+        <p>Representante estadual da <strong>PHPWomen Brasil</strong> no Piauí e uma das lideranças responsáveis pelo fortalecimento das comunidades <strong>PHP PI</strong> e <strong>PHPWomen PI</strong>. Coorganizadora do <strong>Sertão Tech</strong>, evento que conecta pessoas, tecnologia e oportunidades no interior do Piauí.</p>
+        <p>Atua no incentivo à diversidade, inclusão e protagonismo feminino na tecnologia, acreditando no poder das comunidades para transformar trajetórias e abrir caminhos.</p>
+        <p>Antes da carreira, sou mãe do <strong>Kauan, Ravi, Gabriel e Miguel</strong> e esposa do <strong>Bruno Oliveira</strong>. ♡</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PERGUNTA CONDUTORA -->
+  <section class="center-text" data-transition="fade">
+    <div class="blob a"></div><div class="blob b"></div>
+    <p class="kicker">A pergunta que guia tudo</p>
+    <div class="quote-box" style="margin-top:.8em">
+      <h2 style="margin:0; font-size:1.25em; line-height:1.3">Estamos construindo um produto que as pessoas
+        <em style="font-style:normal; border-bottom:3px solid var(--gold)">realmente precisam</em>,
+        <em style="font-style:normal; border-bottom:3px solid var(--gold)">querem usar</em> e
+        <em style="font-style:normal; border-bottom:3px solid var(--gold)">estão dispostas a pagar</em> para ter?</h2>
+    </div>
+    <aside class="notes">Deixe a pergunta no ar por alguns segundos. Ela volta no encerramento.</aside>
+  </section>
+
+  <!-- 3. IDEIA NÃO É OPORTUNIDADE -->
+  <section>
+    <section>
+      <div class="blob a"></div>
+      <div class="num">01</div>
+      <h2>Ideia não é oportunidade de mercado</h2>
+      <p class="muted small">Toda boa jornada de produto começa antes do código.</p>
+    </section>
+    <section>
+      <div class="blob b"></div>
+      <h2>Ideia, solução e produto: não são a mesma coisa</h2>
+      <div class="cards c3">
+        <div class="card"><span class="ico">💡</span><h3>Ideia</h3><p>Uma intuição sobre algo que <strong>poderia</strong> existir. Ainda é só hipótese.</p></div>
+        <div class="card"><span class="ico">🧩</span><h3>Solução</h3><p>A forma específica de <strong>resolver</strong> um problema identificado.</p></div>
+        <div class="card"><span class="ico">📦</span><h3>Produto</h3><p>A solução <strong>entregue</strong>, usada e sustentada por pessoas reais.</p></div>
+      </div>
+    </section>
+    <section>
+      <div class="blob a"></div>
+      <h2>Antes de construir, pergunte:</h2>
+      <div class="cards c2" style="margin-top:1.2em">
+        <div class="card" style="font-size:.8em"><span class="ico">🔍</span><h3>O problema existe de verdade?</h3><p>Ou é uma suposição minha?</p></div>
+        <div class="card" style="font-size:.8em"><span class="ico">👥</span><h3>Quem enfrenta esse problema?</h3><p>Com que frequência, e quanto isso dói?</p></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- 4. CONHECENDO O MERCADO E O PÚBLICO -->
+  <section>
+    <section>
+      <div class="blob a"></div>
+      <div class="num">02</div>
+      <h2>Conhecendo o mercado e o público</h2>
+      <p class="muted small">Aqui entra a descoberta de produto — <strong>Product Discovery</strong>.</p>
+    </section>
+    <section>
+      <div class="blob b"></div>
+      <h2>Product Discovery na prática</h2>
+      <div class="cards c2">
+        <div class="card" style="font-size:.75em"><span class="ico">🎯</span><h3>Público-alvo e segmentos</h3><p>Quem são as pessoas? Quais grupos têm a dor mais intensa e mais disposição a pagar?</p></div>
+        <div class="card" style="font-size:.75em"><span class="ico">🪞</span><h3>Personas e perfis de usuários</h3><p>Construídas a partir de <strong>conversas e dados</strong> — sem depender apenas de suposições.</p></div>
+      </div>
+    </section>
+    <section class="center-text" data-background-gradient="linear-gradient(135deg,#a61e4d,#d6336c)">
+      <p class="kicker" style="color:#ffd6e5">Para provocar</p>
+      <h2 style="color:#fff; font-size:1.4em; line-height:1.3">Você conhece o seu cliente<br>ou conhece apenas a versão dele<br>que imaginou na sua cabeça?</h2>
+    </section>
+  </section>
+
+  <!-- 5. PROPOSTA DE VALOR E PMF -->
+  <section>
+    <section>
+      <div class="blob a"></div>
+      <div class="num">03</div>
+      <h2>Proposta de valor e Product-Market Fit</h2>
+    </section>
+    <section>
+      <div class="blob b"></div>
+      <h2>O que é proposta de valor?</h2>
+      <p>É a <strong>promessa clara</strong> do valor que entregamos, para quem, e por que isso é melhor do que as alternativas que a pessoa já tem.</p>
+      <div class="quote-box small" style="margin-top:1em; padding:22px 30px">
+        <strong>Qual problema o produto resolve?</strong><br>
+        Se você não consegue responder em uma frase, ainda não está pronta para escalar.
+      </div>
+    </section>
+    <section>
+      <div class="blob a"></div>
+      <h2>Product-Market Fit (PMF)</h2>
+      <div class="quote-box" style="margin-top:.6em">
+        <p style="margin:0; font-size:.95em">O momento em que um produto atende a uma <strong>necessidade relevante</strong> de um mercado de maneira <strong>consistente</strong>.</p>
+      </div>
+    </section>
+    <section>
+      <div class="blob b"></div>
+      <h2>Sinais de PMF para observar</h2>
+      <div class="cards c3">
+        <div class="card"><span class="ico">🔁</span><h3>Uso contínuo</h3><p>Clientes que continuam utilizando o produto.</p></div>
+        <div class="card"><span class="ico">📈</span><h3>Retenção e recorrência</h3><p>Voltam sem precisar ser lembrados.</p></div>
+        <div class="card"><span class="ico">💬</span><h3>Recomendação espontânea</h3><p>Indicam sem ganhar nada em troca.</p></div>
+        <div class="card"><span class="ico">💳</span><h3>Disposição para pagar</h3><p>O valor percebido supera o preço.</p></div>
+        <div class="card"><span class="ico">🌱</span><h3>Crescimento da demanda</h3><p>O mercado vem até você.</p></div>
+        <div class="card"><span class="ico">🚪</span><h3>Redução do abandono</h3><p>Menos churn, mais permanência.</p></div>
+      </div>
+    </section>
+    <section class="center-text">
+      <div class="blob a"></div>
+      <p class="kicker">Importante</p>
+      <h2 style="font-size:1.35em">Nenhum indicador isolado<br>comprova Product-Market Fit.</h2>
+      <p class="muted small">Olhe o conjunto, ao longo do tempo.</p>
+    </section>
+  </section>
+
+  <!-- 6. VALIDANDO -->
+  <section>
+    <section>
+      <div class="blob a"></div>
+      <div class="num">04</div>
+      <h2>Validando antes de investir pesado</h2>
+    </section>
+    <section>
+      <div class="blob b"></div>
+      <h2>Do palpite ao aprendizado</h2>
+      <div class="steps">
+        <div class="step"><b>Hipótese</b>Acreditamos que…</div>
+        <div class="arrow">➜</div>
+        <div class="step"><b>Experimento</b>Como testar com baixo custo</div>
+        <div class="arrow">➜</div>
+        <div class="step"><b>Evidência</b>O que o comportamento mostrou</div>
+        <div class="arrow">➜</div>
+        <div class="step"><b>Decisão</b>Seguir, ajustar ou parar</div>
+      </div>
+    </section>
+    <section>
+      <div class="blob a"></div>
+      <h2>Formas de validar</h2>
+      <div class="pill-list">
+        <span class="pill">Hipóteses de produto</span>
+        <span class="pill">Experimentos</span>
+        <span class="pill">MVP</span>
+        <span class="pill">Protótipos</span>
+        <span class="pill">Testes de usabilidade</span>
+        <span class="pill">Landing pages</span>
+        <span class="pill">Testes de interesse</span>
+        <span class="pill">Testes com usuários reais</span>
+      </div>
+    </section>
+    <section class="center-text" data-background-gradient="linear-gradient(135deg,#a61e4d,#d6336c)">
+      <p class="kicker" style="color:#ffd6e5">MVP — Produto Mínimo Viável</p>
+      <h2 style="color:#fff; font-size:1.2em; line-height:1.35">MVP não significa entregar um produto malfeito ou incompleto.</h2>
+      <p style="color:#fff; font-size:.85em">Significa encontrar a <strong style="color:#ffe9a8">menor forma de testar uma hipótese relevante</strong> e gerar aprendizado.</p>
+    </section>
+    <section>
+      <div class="blob b"></div>
+      <h2>Validar uma solução ≠ validar um negócio</h2>
+      <div class="cards c2">
+        <div class="card" style="font-size:.7em"><h3>Validar a solução</h3><p>As pessoas conseguem usar? Entendem? Resolve o problema?</p><p class="muted" style="margin-top:.5em">→ Usabilidade, protótipos, testes</p></div>
+        <div class="card" style="font-size:.7em"><h3>Validar o negócio</h3><p>Pagam? Voltam? Dá para adquirir, entregar e sustentar com lucro?</p><p class="muted" style="margin-top:.5em">→ Receita, retenção, custo, escala</p></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- 7. ERROS COMUNS -->
+  <section>
+    <section>
+      <div class="blob a"></div>
+      <div class="num">05</div>
+      <h2>Erros comuns na construção de produtos</h2>
+      <p class="muted small">Oito armadilhas em que quase todo time já caiu.</p>
+    </section>
+    <section>
+      <div class="blob b"></div>
+      <h2>Cuidado com…</h2>
+      <div class="cards c2" style="gap:12px">
+        <div class="card" style="font-size:.7em; padding:14px 20px">🗣️ <strong>Desenvolver sem conversar com usuários</strong></div>
+        <div class="card" style="font-size:.7em; padding:14px 20px">🧠 <strong>Confundir opinião pessoal com necessidade do mercado</strong></div>
+        <div class="card" style="font-size:.7em; padding:14px 20px">📋 <strong>Copiar concorrentes sem entender o contexto</strong></div>
+        <div class="card" style="font-size:.7em; padding:14px 20px">⬇️ <strong>Achar que muitos downloads significam sucesso</strong></div>
+        <div class="card" style="font-size:.7em; padding:14px 20px">📊 <strong>Não acompanhar indicadores após o lançamento</strong></div>
+        <div class="card" style="font-size:.7em; padding:14px 20px">🙉 <strong>Ignorar feedbacks negativos</strong></div>
+        <div class="card" style="font-size:.7em; padding:14px 20px">💸 <strong>Investir muito antes de validar hipóteses</strong></div>
+        <div class="card" style="font-size:.7em; padding:14px 20px">🧾 <strong>Não ter clareza de como o produto gera receita ou se sustenta</strong></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- 8. TRÊS MENSAGENS -->
+  <section>
+    <section class="center-text">
+      <div class="blob a"></div><div class="blob b"></div>
+      <p class="kicker">Para levar na cabeça</p>
+      <h2>Três mensagens</h2>
+    </section>
+    <section>
+      <div class="blob a"></div>
+      <div class="num">1</div>
+      <h2 style="font-size:1.35em">Não se apaixone pela solução.</h2>
+      <p style="font-size:1.1em">Apaixone-se pelo <strong>problema</strong> que você está tentando resolver.</p>
+    </section>
+    <section>
+      <div class="blob b"></div>
+      <div class="num">2</div>
+      <h2 style="font-size:1.35em">Não confunda entrega com valor.</h2>
+      <p style="font-size:1.1em">Desenvolver e lançar funcionalidades <strong>não significa</strong> que você está melhorando o produto.</p>
+    </section>
+    <section>
+      <div class="blob a"></div>
+      <div class="num">3</div>
+      <h2 style="font-size:1.35em">Lançamento não é linha de chegada.</h2>
+      <p style="font-size:1.1em">Um produto precisa ser <strong>observado, medido, validado e evoluído</strong> continuamente.</p>
+    </section>
+  </section>
+
+  <!-- 9. FRASE FINAL -->
+  <section class="center-text" data-background-gradient="linear-gradient(135deg,#6b2a4a,#a61e4d 60%,#d6336c)">
+    <p style="color:#ffd6e5; font-size:2.4em; font-family:'Playfair Display'; line-height:.5">“</p>
+    <h2 style="color:#fff; font-size:1.2em; line-height:1.4; font-weight:500">
+      Um produto não é adequado ao mercado porque conseguimos construí-lo.<br>
+      <span style="color:#ffe9a8">Ele é adequado quando o mercado demonstra, por meio de comportamento e resultados, que aquela solução realmente importa.</span>
+    </h2>
+  </section>
+
+  <!-- 10. ENCERRAMENTO -->
+  <section class="center-text" data-transition="fade">
+    <div class="blob a"></div><div class="blob b"></div>
+    <h1>Obrigada! ✿</h1>
+    <p class="small muted" style="margin-top:1em">Estamos construindo um produto que as pessoas realmente precisam,<br>querem usar e estão dispostas a pagar para ter?</p>
+    <p style="margin-top:1.5em"><strong>Maria Katriane</strong><br><span class="small muted">Product Manager</span></p>
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+  if (location.search.includes('notrans')) {
+    var st = document.createElement('style');
+    st.textContent = '*{transition:none!important;animation:none!important}';
+    document.head.appendChild(st);
+  }
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    progress: true,
+    controls: true,
+    transition: location.search.includes('notrans') ? 'none' : 'slide',
+    backgroundTransition: location.search.includes('notrans') ? 'none' : 'fade',
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    center: false
+  });
+</script>
+</body>
+</html>
