@@ -48,5 +48,4 @@ Os decks carregam reveal.js e fontes por CDN, então é preciso internet.
 
 ## Palestras atuais
 
-- **Esteira de produtos**: versão completa
 - **Esteira de produtos (roteiro)**: versão enxuta
